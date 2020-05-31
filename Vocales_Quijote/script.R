@@ -4,7 +4,7 @@ library('tidyr')
 library('word.alignment')
 options(warn=-1) #Warnings off
 
-setwd("/home/inaki/Desktop/Hilos_Cuartentena/Vocales_Quijote") #
+setwd("") #Directorio de Trabajo
 book = file('Don_Quijote')
 libro_lines = readLines(book)
 libro_words = paste(libro_lines, collapse = " ")
@@ -16,7 +16,7 @@ VowelCount <- str_count(libro_words, pattern = "[AEIOUaeiou]")
 OutputStrings <- libro_words[VowelCount >= 5]
 
 for (i in 1:length(OutputStrings)) {
-  OutputStrings[i] = tolower(OutputStrings[i]) #Las vocales las paso a consonantes
+  OutputStrings[i] = tolower(OutputStrings[i]) #Vocales a consonantes
 }
 Index = NULL
 
@@ -31,7 +31,5 @@ Palabras_Con_5Vocales = OutputStrings[Index]
 length(Palabras_Con_5Vocales)
 
 Palabras_Con_5Vocales = as.data.frame(Palabras_Con_5Vocales)
-colnames(Palabras_Con_5Vocales) = 'Palabra'
-
 write.csv(Palabras_Con_5Vocales, 'Palabras.csv')
 
